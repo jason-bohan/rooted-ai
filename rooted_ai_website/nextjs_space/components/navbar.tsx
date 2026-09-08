@@ -5,16 +5,16 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Container } from '@/components/layouts/container'
 import { Button } from '@/components/ui/button'
-import { Menu, X, Leaf } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
-  { href: '/solutions', label: 'Solutions' },
-  { href: '/how-it-works', label: 'How It Works' },
-  { href: '/use-cases', label: 'Use Cases' },
-  { href: '/security', label: 'Security' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/solutions', label: 'Solutions', index: '01' },
+  { href: '/how-it-works', label: 'How It Works', index: '02' },
+  { href: '/use-cases', label: 'Use Cases', index: '03' },
+  { href: '/security', label: 'Security', index: '04' },
+  { href: '/contact', label: 'Contact', index: '05' },
 ]
 
 export function Navbar() {
@@ -22,37 +22,48 @@ export function Navbar() {
   const pathname = usePathname()
 
   return (
-    <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
+    <header className="sticky top-0 z-50 border-b-2 border-border bg-background">
+      {/* meta strip */}
+      <div className="hidden lg:block border-b border-border bg-primary text-primary-foreground">
+        <Container size="xl" className="flex h-7 items-center justify-between">
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em]">
+            Local AI infrastructure
+          </p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em]">
+            Data stays in your building <span className="ml-1 text-accent">●</span>
+          </p>
+        </Container>
+      </div>
+
       <Container size="xl">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center">
-              <Leaf className="w-5 h-5 text-primary-foreground" />
-            </div>
-            <span className="font-display text-xl font-bold tracking-tight text-foreground">
-              Rooted <span className="text-primary">AI</span>
+            <span className="inline-block h-6 w-6 border-2 border-primary bg-primary transition-colors group-hover:bg-transparent" />
+            <span className="font-mono text-lg font-bold uppercase tracking-[0.12em] text-foreground">
+              Rooted<span className="text-primary">.ai</span>
             </span>
           </Link>
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-1">
-            {navLinks?.map((link: { href: string; label: string }) => (
+            {navLinks?.map((link: { href: string; label: string; index: string }) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'px-3 py-2 rounded-md text-sm font-medium transition-colors',
+                  'px-3 py-2 font-mono text-[11px] uppercase tracking-[0.14em] transition-colors border-b-2',
                   pathname === link.href
-                    ? 'text-primary bg-primary/10'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                    ? 'text-foreground border-primary'
+                    : 'text-muted-foreground border-transparent hover:text-foreground hover:border-border'
                 )}
               >
+                <span className="mr-1 text-accent">{link.index}</span>
                 {link.label}
               </Link>
             ))}
-            <Link href="/contact">
-              <Button size="sm" className="ml-3">
+            <Link href="/contact" className="ml-3">
+              <Button size="sm" variant="hud-primary" className="h-8 px-4">
                 Get Started
               </Button>
             </Link>
@@ -61,7 +72,7 @@ export function Navbar() {
           {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 rounded-md hover:bg-muted"
+            className="md:hidden p-2 border-2 border-foreground"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -76,27 +87,28 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-border bg-background"
+            className="md:hidden border-t-2 border-border bg-background"
           >
             <Container size="xl">
               <nav className="py-4 flex flex-col gap-1">
-                {navLinks?.map((link: { href: string; label: string }) => (
+                {navLinks?.map((link: { href: string; label: string; index: string }) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
                     className={cn(
-                      'px-3 py-3 rounded-md text-sm font-medium transition-colors',
+                      'px-3 py-3 font-mono text-xs uppercase tracking-[0.14em] border-l-2 transition-colors',
                       pathname === link.href
-                        ? 'text-primary bg-primary/10'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                        ? 'text-foreground border-accent bg-muted'
+                        : 'text-muted-foreground border-transparent hover:text-foreground'
                     )}
                   >
+                    <span className="mr-2 text-accent">{link.index}</span>
                     {link.label}
                   </Link>
                 ))}
-                <Link href="/contact" onClick={() => setMobileOpen(false)}>
-                  <Button size="sm" className="w-full mt-2">
+                <Link href="/contact" onClick={() => setMobileOpen(false)} className="mt-3">
+                  <Button variant="hud-primary" className="w-full">
                     Get Started
                   </Button>
                 </Link>

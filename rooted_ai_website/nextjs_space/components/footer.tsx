@@ -1,51 +1,59 @@
 import Link from 'next/link'
 import { Container } from '@/components/layouts/container'
-import { Leaf } from 'lucide-react'
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="border-t-2 border-border bg-primary text-primary-foreground">
       <Container size="xl">
-        <div className="py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-primary-foreground/20 flex items-center justify-center">
-                <Leaf className="w-4 h-4 text-primary-foreground" />
-              </div>
-              <span className="font-display text-lg font-bold">Rooted AI</span>
+        <div className="py-14 grid grid-cols-1 md:grid-cols-12 gap-10">
+          {/* Brand / terminal */}
+          <div className="md:col-span-5">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="inline-block h-4 w-4 border-2 border-primary-foreground" />
+              <span className="font-mono text-base font-bold uppercase tracking-[0.12em]">
+                Rooted<span className="text-accent">.ai</span>
+              </span>
             </div>
-            <p className="text-sm text-primary-foreground/70 max-w-xs">
-              Private, powerful AI infrastructure built for your organization. Your data never leaves your building.
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-primary-foreground/70 leading-relaxed max-w-sm">
+              Private, powerful AI infrastructure. Your data never leaves your building — ever.
             </p>
+            <div className="mt-6 space-y-1 font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/50">
+              <p>▸ status …… online / on-prem</p>
+              <p>▸ egress ….. 0 requests to cloud APIs <span className="text-accent">●</span></p>
+              <p>▸ node …… yours, in your building</p>
+            </div>
           </div>
 
           {/* Navigation */}
-          <div>
-            <h4 className="font-display font-semibold mb-3 text-sm uppercase tracking-wider text-primary-foreground/60">Navigate</h4>
+          <div className="md:col-span-3">
+            <h4 className="label mb-4 text-primary-foreground/50">Navigate</h4>
             <nav className="flex flex-col gap-2">
-              <Link href="/solutions" className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">Solutions</Link>
-              <Link href="/how-it-works" className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">How It Works</Link>
-              <Link href="/use-cases" className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">Use Cases</Link>
-              <Link href="/security" className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">Security</Link>
+              <Link href="/solutions" className="w-fit font-mono text-xs uppercase tracking-[0.12em] text-primary-foreground/85 hover:text-accent transition-colors">Solutions</Link>
+              <Link href="/how-it-works" className="w-fit font-mono text-xs uppercase tracking-[0.12em] text-primary-foreground/85 hover:text-accent transition-colors">How It Works</Link>
+              <Link href="/use-cases" className="w-fit font-mono text-xs uppercase tracking-[0.12em] text-primary-foreground/85 hover:text-accent transition-colors">Use Cases</Link>
+              <Link href="/security" className="w-fit font-mono text-xs uppercase tracking-[0.12em] text-primary-foreground/85 hover:text-accent transition-colors">Security</Link>
             </nav>
           </div>
 
           {/* Contact */}
-          <div>
-            <h4 className="font-display font-semibold mb-3 text-sm uppercase tracking-wider text-primary-foreground/60">Get In Touch</h4>
-            <Link href="/contact" className="text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors block mb-2">
-              Schedule a Free Infrastructure Audit
+          <div className="md:col-span-4">
+            <h4 className="label mb-4 text-primary-foreground/50">Get In Touch</h4>
+            <Link href="/contact" className="inline-block border-2 border-primary-foreground/40 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.14em] text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-colors">
+              Schedule a free infrastructure audit
             </Link>
-            <p className="text-sm text-primary-foreground/60">
-              <span suppressHydrationWarning>jasonbohan2@gmail.com</span>
+            <p className="mt-4 font-mono text-xs text-primary-foreground/70" suppressHydrationWarning>
+              jasonbohan2@gmail.com
             </p>
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 py-6 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-xs text-primary-foreground/50">© 2025 Rooted AI. All rights reserved.</p>
-          <p className="text-xs text-primary-foreground/40">Local AI infrastructure for businesses, libraries & non-profits.</p>
+        <div className="border-t-2 border-primary-foreground/20 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-primary-foreground/50">
+            © 2025 Rooted AI. All rights reserved.
+          </p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-primary-foreground/40">
+            Local AI for businesses, libraries & non-profits
+          </p>
         </div>
       </Container>
     </footer>

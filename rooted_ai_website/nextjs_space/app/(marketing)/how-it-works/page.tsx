@@ -18,7 +18,7 @@ const steps = [
     icon: ClipboardCheck,
     num: '01',
     title: 'Assess',
-    subtitle: 'Understand Your Needs',
+    subtitle: 'Understand your needs',
     desc: 'We start with a thorough audit of your organization — your data sources, daily workflows, security requirements, and hardware environment. This is free and comes with no obligations.',
     details: [
       'Interview key stakeholders about AI use cases',
@@ -32,7 +32,7 @@ const steps = [
     icon: Package,
     num: '02',
     title: 'Provision',
-    subtitle: 'Build Your Hardware',
+    subtitle: 'Build your hardware',
     desc: 'Based on your needs, we source and configure the ideal local AI server. From a compact Mac Mini setup for a library to a multi-GPU NVIDIA rig for enterprise workloads.',
     details: [
       'Select optimal hardware for your use case and budget',
@@ -46,7 +46,7 @@ const steps = [
     icon: Rocket,
     num: '03',
     title: 'Deploy',
-    subtitle: 'Install & Connect',
+    subtitle: 'Install & connect',
     desc: 'We install the server on-site, connect it to your network, and integrate with your documents. Your team gets a simple web interface to start using AI immediately.',
     details: [
       'On-site installation and network configuration',
@@ -60,7 +60,7 @@ const steps = [
     icon: HeadphonesIcon,
     num: '04',
     title: 'Support',
-    subtitle: 'Ongoing Partnership',
+    subtitle: 'Ongoing partnership',
     desc: 'We do not just set it up and walk away. We provide ongoing managed services — model updates, performance tuning, fine-tuning on your data, and troubleshooting.',
     details: [
       'Regular model updates as new versions release',
@@ -75,13 +75,15 @@ const steps = [
 export default function HowItWorksPage() {
   return (
     <>
-      <section className="bg-primary pt-20 pb-16">
-        <Container size="xl">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-primary-foreground mb-4">
-              How It <span className="text-accent">Works</span>
+      <section className="relative overflow-hidden border-b-2 border-border bg-primary text-primary-foreground">
+        <div className="gridfield absolute inset-0 opacity-[0.14]" aria-hidden />
+        <Container size="xl" className="relative z-10">
+          <div className="py-14 sm:py-20 max-w-3xl">
+            <p className="label mb-5 text-primary-foreground/60">Operating procedure ▸ 4 steps</p>
+            <h1 className="font-mono text-3xl sm:text-5xl font-bold uppercase leading-[0.95] tracking-tight">
+              How it <span className="text-accent">works</span>
             </h1>
-            <p className="text-lg text-primary-foreground/80">
+            <p className="mt-5 max-w-xl font-mono text-[11px] sm:text-sm uppercase tracking-[0.1em] leading-relaxed text-primary-foreground/80">
               From first conversation to fully operational AI — four clear steps, zero guesswork.
             </p>
           </div>
@@ -90,25 +92,25 @@ export default function HowItWorksPage() {
 
       <Section>
         <Container size="xl">
-          <div className="space-y-8">
+          <div className="space-y-6">
             {steps?.map((step: any, i: number) => (
               <div key={i}>
-                <div className="bg-card rounded-2xl p-8 sm:p-10 shadow-[var(--shadow-md)]">
+                <div className="hud p-6 sm:p-10">
                   <div className="flex flex-col md:flex-row md:items-start gap-6">
-                    <div className="shrink-0">
-                      <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center">
-                        <step.icon className="w-8 h-8 text-primary" />
+                    <div className="shrink-0 md:w-40">
+                      <div className="flex h-14 w-14 items-center justify-center border-2 border-primary/40">
+                        <step.icon className="h-7 w-7 text-primary" />
                       </div>
-                      <span className="font-mono text-4xl font-bold text-primary/30 block mt-2">{step?.num}</span>
+                      <span className="mt-3 block font-mono text-5xl font-bold text-accent/60">{step?.num}</span>
                     </div>
                     <div className="flex-1">
-                      <h2 className="font-display text-2xl font-bold tracking-tight mb-1">{step?.title}</h2>
-                      <p className="text-accent font-medium text-sm mb-3">{step?.subtitle}</p>
+                      <p className="label mb-2">{step?.subtitle}</p>
+                      <h2 className="font-mono text-xl sm:text-2xl font-bold uppercase tracking-tight mb-4">{step?.title}</h2>
                       <p className="text-muted-foreground mb-6">{step?.desc}</p>
-                      <ul className="space-y-2">
+                      <ul className="space-y-2 border-t-2 border-foreground/15 pt-4">
                         {step?.details?.map((d: string, j: number) => (
                           <li key={j} className="flex items-start gap-2 text-sm">
-                            <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                            <CheckCircle2 className="h-4 w-4 text-accent shrink-0 mt-0.5" />
                             {d}
                           </li>
                         ))}
@@ -118,23 +120,24 @@ export default function HowItWorksPage() {
                 </div>
                 {i < (steps?.length ?? 0) - 1 && (
                   <div className="flex justify-center py-4">
-                    <ArrowDown className="w-6 h-6 text-primary/30" />
+                    <ArrowDown className="h-5 w-5 text-accent" />
                   </div>
                 )}
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-16">
-            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-4">
-              Ready to get started?
+          <div className="mt-16 flex flex-col items-center text-center">
+            <p className="label mb-4">Ready?</p>
+            <h2 className="font-mono text-2xl sm:text-3xl font-bold uppercase tracking-tight mb-4">
+              Ready to <span className="text-accent">get started?</span>
             </h2>
-            <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
+            <p className="text-sm text-muted-foreground mb-8 max-w-lg">
               The assessment is free and comes with a detailed recommendation report — no strings attached.
             </p>
             <Link href="/contact?type=audit">
-              <Button size="lg" className="px-8">
-                Schedule Your Free Audit <ArrowRight className="w-4 h-4 ml-2" />
+              <Button variant="hud-primary" className="px-8">
+                Schedule your free audit <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
           </div>

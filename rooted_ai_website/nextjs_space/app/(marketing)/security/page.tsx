@@ -24,24 +24,26 @@ const comparisonRows = [
 ]
 
 const securityFeatures = [
-  { icon: Lock, title: 'Physical Data Isolation', desc: 'Your AI server sits in your building. Data is processed locally and never transmitted externally. This is the strongest form of data security.' },
-  { icon: Eye, title: 'Open Source Transparency', desc: 'We use auditable, open-source models like Llama and Mistral. No proprietary black boxes — you can inspect every layer of the AI stack.' },
-  { icon: Network, title: 'Encrypted Mesh Networking', desc: 'For multi-location organizations, we use Tailscale or WireGuard to create encrypted private tunnels. No data touches the public internet.' },
-  { icon: Server, title: 'Hardware You Own', desc: 'The server is yours. If you ever want to stop working with us, your hardware and data remain fully under your control.' },
-  { icon: FileCheck, title: 'Compliance Made Simple', desc: 'HIPAA, SOC2, FERPA, GDPR — when data never leaves your network, compliance is dramatically simpler.' },
-  { icon: Shield, title: 'No Vendor Lock-in', desc: 'Swap models anytime. Add new data sources. Scale hardware up. You are never locked into a proprietary ecosystem.' },
+  { icon: Lock, title: 'Physical data isolation', desc: 'Your AI server sits in your building. Data is processed locally and never transmitted externally. This is the strongest form of data security.' },
+  { icon: Eye, title: 'Open source transparency', desc: 'We use auditable, open-source models like Llama and Mistral. No proprietary black boxes — you can inspect every layer of the AI stack.' },
+  { icon: Network, title: 'Encrypted mesh networking', desc: 'For multi-location organizations, we use Tailscale or WireGuard to create encrypted private tunnels. No data touches the public internet.' },
+  { icon: Server, title: 'Hardware you own', desc: 'The server is yours. If you ever want to stop working with us, your hardware and data remain fully under your control.' },
+  { icon: FileCheck, title: 'Compliance made simple', desc: 'HIPAA, SOC2, FERPA, GDPR — when data never leaves your network, compliance is dramatically simpler.' },
+  { icon: Shield, title: 'No vendor lock-in', desc: 'Swap models anytime. Add new data sources. Scale hardware up. You are never locked into a proprietary ecosystem.' },
 ]
 
 export default function SecurityPage() {
   return (
     <>
-      <section className="bg-primary pt-20 pb-16">
-        <Container size="xl">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-primary-foreground mb-4">
-              Trust & <span className="text-accent">Security</span>
+      <section className="relative overflow-hidden border-b-2 border-border bg-primary text-primary-foreground">
+        <div className="gridfield absolute inset-0 opacity-[0.14]" aria-hidden />
+        <Container size="xl" className="relative z-10">
+          <div className="py-14 sm:py-20 max-w-3xl">
+            <p className="label mb-5 text-primary-foreground/60">Security ▸ by architecture, not promise</p>
+            <h1 className="font-mono text-3xl sm:text-5xl font-bold uppercase leading-[0.95] tracking-tight">
+              Trust & <span className="text-accent">security</span>
             </h1>
-            <p className="text-lg text-primary-foreground/80">
+            <p className="mt-5 max-w-xl font-mono text-[11px] sm:text-sm uppercase tracking-[0.1em] leading-relaxed text-primary-foreground/80">
               Your data never leaves your building. That is not a marketing promise — it is the architecture.
             </p>
           </div>
@@ -50,22 +52,23 @@ export default function SecurityPage() {
 
       <Section>
         <Container size="xl">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="font-display text-3xl font-bold tracking-tight mb-4">
-              Why Local AI is <span className="text-primary">Inherently Safer</span>
+          <div className="mb-12 border-b-2 border-foreground/15 pb-8">
+            <p className="label mb-3">The core claim</p>
+            <h2 className="font-mono text-2xl sm:text-4xl font-bold uppercase tracking-tight mb-4">
+              Why local AI is <span className="text-accent">inherently safer</span>
             </h2>
-            <p className="text-muted-foreground">
+            <p className="max-w-2xl text-muted-foreground">
               Cloud AI sends your data to someone else's server. Local AI keeps it in your building. The security difference is not incremental — it is fundamental.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {securityFeatures?.map((f: any, i: number) => (
-              <div key={i} className="bg-card rounded-xl p-6 shadow-[var(--shadow-md)] hover:shadow-[var(--shadow-lg)] transition-shadow">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <f.icon className="w-5 h-5 text-primary" />
+              <div key={i} className="hud p-6">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center border-2 border-primary/40">
+                  <f.icon className="h-5 w-5 text-primary" />
                 </div>
-                <h3 className="font-display font-semibold text-lg mb-2">{f?.title}</h3>
+                <h3 className="font-mono text-sm font-bold uppercase tracking-tight mb-2">{f?.title}</h3>
                 <p className="text-sm text-muted-foreground">{f?.desc}</p>
               </div>
             ))}
@@ -73,34 +76,35 @@ export default function SecurityPage() {
         </Container>
       </Section>
 
-      <Section className="bg-muted/30">
+      <Section className="bg-muted/40 border-y-2 border-border">
         <Container size="xl">
-          <div className="text-center mb-12">
-            <h2 className="font-display text-3xl font-bold tracking-tight mb-4">
-              Local AI vs. <span className="text-accent">Cloud AI</span>
+          <div className="mb-10 border-b-2 border-foreground/15 pb-8">
+            <p className="label mb-3">Comparison</p>
+            <h2 className="font-mono text-2xl sm:text-4xl font-bold uppercase tracking-tight">
+              Local AI vs. <span className="text-accent">cloud AI</span>
             </h2>
-            <p className="text-muted-foreground">See exactly how Rooted AI compares to cloud-based alternatives.</p>
+            <p className="mt-3 text-sm text-muted-foreground">See exactly how Rooted AI compares to cloud-based alternatives.</p>
           </div>
 
-          <div className="bg-card rounded-2xl shadow-[var(--shadow-md)] overflow-x-auto">
-            <div className="min-w-[600px]">
+          <div className="hud overflow-x-auto border-2 border-foreground/20">
+            <div className="min-w-[620px]">
               <div className="grid grid-cols-3 bg-primary text-primary-foreground">
-                <div className="p-4 font-display font-semibold text-sm">Feature</div>
-                <div className="p-4 font-display font-semibold text-sm text-center">Rooted AI (Local)</div>
-                <div className="p-4 font-display font-semibold text-sm text-center">Cloud AI (ChatGPT, etc.)</div>
+                <div className="p-4 font-mono text-[11px] font-bold uppercase tracking-[0.14em]">Feature</div>
+                <div className="p-4 font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-center">Rooted AI · local</div>
+                <div className="p-4 font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-center">Cloud AI</div>
               </div>
               {comparisonRows?.map((row: any, i: number) => (
-                <div key={i} className={`grid grid-cols-3 ${i % 2 === 0 ? 'bg-card' : 'bg-muted/30'}`}>
-                  <div className="p-4 font-medium text-sm">{row?.feature}</div>
-                  <div className="p-4 text-sm">
+                <div key={i} className={`grid grid-cols-3 ${i % 2 === 0 ? '' : 'bg-muted/40'}`}>
+                  <div className="p-4 font-mono text-xs font-bold uppercase tracking-tight border-r border-foreground/15">{row?.feature}</div>
+                  <div className="p-4 text-sm border-r border-foreground/15">
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                       <span>{row?.local}</span>
                     </div>
                   </div>
                   <div className="p-4 text-sm">
                     <div className="flex items-start gap-2">
-                      <AlertTriangle className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                      <AlertTriangle className="h-4 w-4 text-accent shrink-0 mt-0.5" />
                       <span className="text-muted-foreground">{row?.cloud}</span>
                     </div>
                   </div>
@@ -113,16 +117,17 @@ export default function SecurityPage() {
 
       <Section>
         <Container size="xl">
-          <div className="text-center">
-            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-4">
-              Security questions? We love talking about this.
+          <div className="hud flex flex-col items-center p-10 sm:p-14 text-center">
+            <p className="label mb-4">Questions?</p>
+            <h2 className="font-mono text-2xl sm:text-3xl font-bold uppercase tracking-tight mb-4">
+              We love <span className="text-accent">talking about this.</span>
             </h2>
-            <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
+            <p className="text-sm text-muted-foreground mb-8 max-w-lg">
               Schedule a free audit and we will walk through exactly how your data stays protected.
             </p>
             <Link href="/contact?type=audit">
-              <Button size="lg" className="px-8">
-                Schedule a Security Discussion <ArrowRight className="w-4 h-4 ml-2" />
+              <Button variant="hud-primary" className="px-8">
+                Schedule a security discussion <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
           </div>
