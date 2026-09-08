@@ -1,5 +1,6 @@
 import { Container } from '@/components/layouts/container'
 import { Section } from '@/components/layouts/section'
+import { PageHero } from '@/components/layouts/page-hero'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import {
@@ -64,20 +65,12 @@ const useCases = [
 export default function UseCasesPage() {
   return (
     <>
-      <section className="relative overflow-hidden border-b-2 border-border bg-primary text-primary-foreground">
-        <div className="gridfield absolute inset-0 opacity-[0.14]" aria-hidden />
-        <Container size="xl" className="relative z-10">
-          <div className="py-14 sm:py-20 max-w-3xl">
-            <p className="label mb-5 text-primary-foreground/60">Deployments ▸ 5 field cases</p>
-            <h1 className="font-mono text-3xl sm:text-5xl font-bold uppercase leading-[0.95] tracking-tight">
-              Real-world <span className="text-accent">use cases</span>
-            </h1>
-            <p className="mt-5 max-w-xl font-mono text-[11px] sm:text-sm uppercase tracking-[0.1em] leading-relaxed text-primary-foreground/80">
-              See how organizations like yours are using private, local AI to transform their workflows.
-            </p>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow="Deployments ▸ 5 field cases"
+        title="Real-world"
+        accent="use cases"
+        sub="See how organizations like yours are using private, local AI to transform their workflows."
+      />
 
       <Section>
         <Container size="xl">

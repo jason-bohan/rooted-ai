@@ -17,6 +17,8 @@ const navLinks = [
   { href: '/contact', label: 'Contact', index: '05' },
 ]
 
+const meshLink = { href: '/mesh', label: 'Mesh Initiative' }
+
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
@@ -29,9 +31,9 @@ export function Navbar() {
           <p className="font-mono text-[10px] uppercase tracking-[0.22em]">
             Local AI infrastructure
           </p>
-          <p className="font-mono text-[10px] uppercase tracking-[0.22em]">
-            Data stays in your building <span className="ml-1 text-accent">●</span>
-          </p>
+          <Link href="/mesh" className="font-mono text-[10px] uppercase tracking-[0.22em] hover:text-accent transition-colors">
+            Compute you control <span className="ml-1 text-accent">●</span>
+          </Link>
         </Container>
       </div>
 
@@ -39,8 +41,8 @@ export function Navbar() {
         <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <span className="inline-block h-6 w-6 border-2 border-primary bg-primary transition-colors group-hover:bg-transparent" />
-            <span className="font-mono text-lg font-bold uppercase tracking-[0.12em] text-foreground">
+            <span className="blob inline-block h-6 w-6 border-2 border-primary bg-primary transition-transform duration-normal group-hover:rotate-[15deg]" />
+            <span className="font-mono text-lg font-bold lowercase tracking-[0.08em] text-foreground">
               Rooted<span className="text-primary">.ai</span>
             </span>
           </Link>
@@ -62,6 +64,17 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href={meshLink.href}
+              className={cn(
+                'ml-2 border-2 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] transition-colors',
+                pathname === meshLink.href
+                  ? 'border-accent bg-accent text-accent-foreground'
+                  : 'border-accent text-accent hover:bg-accent hover:text-accent-foreground'
+              )}
+            >
+              {meshLink.label}
+            </Link>
             <Link href="/contact" className="ml-3">
               <Button size="sm" variant="hud-primary" className="h-8 px-4">
                 Get Started
@@ -107,6 +120,13 @@ export function Navbar() {
                     {link.label}
                   </Link>
                 ))}
+                <Link
+                  href={meshLink.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="mt-2 px-3 py-3 font-mono text-xs uppercase tracking-[0.14em] border-l-2 border-accent text-accent"
+                >
+                  ▸ {meshLink.label}
+                </Link>
                 <Link href="/contact" onClick={() => setMobileOpen(false)} className="mt-3">
                   <Button variant="hud-primary" className="w-full">
                     Get Started

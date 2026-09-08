@@ -18,9 +18,18 @@ const orgTypes = [
   'Other',
 ]
 
+const meshOrgTypes = [
+  'Individual',
+  'Community Group',
+  'Municipality / Town',
+  'Researcher / Builder',
+  'Other',
+]
+
 export function ContactForm() {
   const searchParams = useSearchParams()
   const formType = searchParams?.get('type') ?? 'general'
+  const isMesh = formType === 'mesh'
 
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
@@ -43,6 +52,11 @@ export function ContactForm() {
       setForm((prev: any) => ({
         ...(prev ?? {}),
         message: prev?.message || 'I would like to request a local AI demo for my organization.',
+      }))
+    } else if (formType === 'mesh') {
+      setForm((prev: any) => ({
+        ...(prev ?? {}),
+        message: prev?.message || 'I would like to learn more about / get involved with the Mesh Initiative.',
       }))
     }
   }, [formType])
@@ -111,11 +125,11 @@ export function ContactForm() {
           />
         </div>
         <div>
-          <Label htmlFor="organization">Organization *</Label>
+          <Label htmlFor="organization">{isMesh ? 'Organization / Town *' : 'Organization *'}</Label>
           <Input
             id="organization"
             name="organization"
-            placeholder="Organization name"
+            placeholder={isMesh ? 'Organization, town, or "Individual"' : 'Organization name'}
             value={form?.organization ?? ''}
             onChange={handleChange}
             className="mt-1.5"
@@ -153,7 +167,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <Label htmlFor="organizationType">Organization Type *</Label>
+        <Label htmlFor="organizationType">{isMesh ? 'You are a *' : 'Organization Type *'}</Label>
         <select
           id="organizationType"
           name="organizationType"
@@ -162,19 +176,19 @@ export function ContactForm() {
           className="mt-1.5 flex h-10 w-full rounded-[var(--radius)] border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           required
         >
-          <option value="" disabled>Select organization type</option>
-          {orgTypes?.map((type: string) => (
+          <option value="" disabled>{isMesh ? 'Select one' : 'Select organization type'}</option>
+          {(isMesh ? meshOrgTypes : orgTypes)?.map((type: string) => (
             <option key={type} value={type}>{type}</option>
           ))}
         </select>
       </div>
 
       <div>
-        <Label htmlFor="message">Tell us about your needs *</Label>
+        <Label htmlFor="message">{isMesh ? 'Tell us what interests you *' : 'Tell us about your needs *'}</Label>
         <Textarea
           id="message"
           name="message"
-          placeholder="What challenges are you facing? What would you like AI to help with?"
+          placeholder={isMesh ? 'What draws you to the mesh initiative? Are you interested in a pilot?' : 'What challenges are you facing? What would you like AI to help with?'}
           value={form?.message ?? ''}
           onChange={handleChange}
           className="mt-1.5 min-h-[120px]"

@@ -1,5 +1,6 @@
 import { Container } from '@/components/layouts/container'
 import { Section } from '@/components/layouts/section'
+import { PageHero } from '@/components/layouts/page-hero'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import {
@@ -26,25 +27,6 @@ const nonprofitBenefits = [
   { icon: Gift, title: 'Grant-Fundable', desc: 'Hardware purchases are tangible capital expenditures — perfect for grant applications and one-time funding.' },
   { icon: Library, title: 'Community AI Stations', desc: 'Set up AI-powered research stations for patrons, students, and community members to use freely.' },
 ]
-
-function PageHero({ eyebrow, title, accent, sub }: { eyebrow: string; title: string; accent: string; sub: string }) {
-  return (
-    <section className="relative overflow-hidden border-b-2 border-border bg-primary text-primary-foreground">
-      <div className="gridfield absolute inset-0 opacity-[0.14]" aria-hidden />
-      <Container size="xl" className="relative z-10">
-        <div className="py-14 sm:py-20 max-w-3xl">
-          <p className="label mb-5 text-primary-foreground/60">{eyebrow}</p>
-          <h1 className="font-mono text-3xl sm:text-5xl font-bold uppercase leading-[0.95] tracking-tight">
-            {title} <span className="text-accent">{accent}</span>
-          </h1>
-          <p className="mt-5 max-w-xl font-mono text-[11px] sm:text-sm uppercase tracking-[0.1em] leading-relaxed text-primary-foreground/80">
-            {sub}
-          </p>
-        </div>
-      </Container>
-    </section>
-  )
-}
 
 export default function SolutionsPage() {
   return (

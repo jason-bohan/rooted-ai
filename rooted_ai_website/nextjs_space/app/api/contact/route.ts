@@ -37,11 +37,11 @@ export async function POST(request: Request) {
 
     // Send email notification
     const htmlBody = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #2D5016; border-bottom: 2px solid #C17F24; padding-bottom: 10px;">
-          New ${formType === 'audit' ? 'Infrastructure Audit Request' : formType === 'demo' ? 'Demo Request' : 'Contact Form Submission'}
+      <div style="font-family: 'Courier New', monospace; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #171717; border-bottom: 2px solid #FF4D00; padding-bottom: 10px;">
+          New ${formType === 'audit' ? 'Infrastructure Audit Request' : formType === 'demo' ? 'Demo Request' : formType === 'mesh' ? 'Mesh Initiative Inquiry' : 'Contact Form Submission'}
         </h2>
-        <div style="background: #F5F0E8; padding: 20px; border-radius: 8px; margin: 20px 0;">
+        <div style="background: #F5F5F5; padding: 20px; border-radius: 0; margin: 20px 0;">
           <p style="margin: 8px 0;"><strong>Name:</strong> ${name}</p>
           <p style="margin: 8px 0;"><strong>Organization:</strong> ${organization}</p>
           <p style="margin: 8px 0;"><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
@@ -49,7 +49,7 @@ export async function POST(request: Request) {
           <p style="margin: 8px 0;"><strong>Organization Type:</strong> ${organizationType}</p>
           <p style="margin: 8px 0;"><strong>Request Type:</strong> ${formType}</p>
         </div>
-        <div style="background: white; padding: 15px; border-radius: 4px; border-left: 4px solid #2D5016; margin: 20px 0;">
+        <div style="background: white; padding: 15px; border-radius: 0; border-left: 4px solid #FF4D00; margin: 20px 0;">
           <p style="margin: 0; font-weight: bold; color: #666;">Message:</p>
           <p style="margin: 8px 0 0 0;">${message}</p>
         </div>

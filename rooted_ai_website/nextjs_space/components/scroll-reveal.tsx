@@ -14,7 +14,7 @@ const staggerContainer = {
   visible: { transition: { staggerChildren: 0.1 } },
 }
 
-export function HomeAnimations({ children }: { children: React.ReactNode }) {
+export function ScrollReveal({ children }: { children: React.ReactNode }) {
   return (
     <>
       {React.Children.map(children, (child: any, i: number) => {

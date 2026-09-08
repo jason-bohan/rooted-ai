@@ -1,5 +1,6 @@
 import { Container } from '@/components/layouts/container'
 import { Section } from '@/components/layouts/section'
+import { PageHero } from '@/components/layouts/page-hero'
 import { Mail, Clock, ArrowRight, CheckCircle2 } from 'lucide-react'
 import { ContactForm } from './_components/contact-form'
 import type { Metadata } from 'next'
@@ -19,20 +20,12 @@ const nextSteps = [
 export default function ContactPage() {
   return (
     <>
-      <section className="relative overflow-hidden border-b-2 border-border bg-primary text-primary-foreground">
-        <div className="gridfield absolute inset-0 opacity-[0.14]" aria-hidden />
-        <Container size="xl" className="relative z-10">
-          <div className="py-14 sm:py-20 max-w-3xl">
-            <p className="label mb-5 text-primary-foreground/60">Contact ▸ inbound open</p>
-            <h1 className="font-mono text-3xl sm:text-5xl font-bold uppercase leading-[0.95] tracking-tight">
-              Get <span className="text-accent">started</span>
-            </h1>
-            <p className="mt-5 max-w-xl font-mono text-[11px] sm:text-sm uppercase tracking-[0.1em] leading-relaxed text-primary-foreground/80">
-              Ready to bring AI inside your building? Start with a free infrastructure audit or request a live demo.
-            </p>
-          </div>
-        </Container>
-      </section>
+      <PageHero
+        eyebrow="Contact ▸ inbound open"
+        title="Get"
+        accent="started"
+        sub="Ready to bring AI inside your building — or join the mesh initiative? Tell us which."
+      />
 
       <Section>
         <Container size="xl">
