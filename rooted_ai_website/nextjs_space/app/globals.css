@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Rooted AI earthy palette — light mode */
+    --background: 38 33% 94%;          /* warm cream #F5F0E8 */
+    --foreground: 0 0% 17%;            /* charcoal #2C2C2C */
+
+    --card: 38 33% 97%;                /* lighter cream */
+    --card-foreground: 0 0% 17%;
+
+    --popover: 38 33% 97%;
+    --popover-foreground: 0 0% 17%;
+
+    --primary: 100 55% 20%;            /* forest green #2D5016 */
+    --primary-foreground: 38 33% 94%;
+
+    --secondary: 38 25% 88%;           /* muted tan */
+    --secondary-foreground: 100 55% 20%;
+
+    --muted: 38 20% 90%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 36 67% 45%;              /* amber #C17F24 */
+    --accent-foreground: 38 33% 13%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 10%;
+
+    --border: 38 20% 82%;
+    --input: 38 20% 82%;
+    --ring: 100 55% 20%;
+
+    --radius: 0.625rem;
+
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.06);
+    --shadow-md: 0 4px 12px 0 rgb(0 0 0 / 0.08);
+    --shadow-lg: 0 10px 30px 0 rgb(0 0 0 / 0.12);
+
+    --duration-fast: 150ms;
+    --duration-normal: 250ms;
+    --duration-slow: 350ms;
+  }
+
+  .dark {
+    --background: 100 20% 8%;
+    --foreground: 38 33% 94%;
+
+    --card: 100 15% 12%;
+    --card-foreground: 38 33% 94%;
+
+    --popover: 100 15% 12%;
+    --popover-foreground: 38 33% 94%;
+
+    --primary: 100 45% 40%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 100 15% 18%;
+    --secondary-foreground: 38 33% 94%;
+
+    --muted: 100 10% 18%;
+    --muted-foreground: 38 15% 60%;
+
+    --accent: 36 67% 50%;
+    --accent-foreground: 0 0% 20%;
+
+    --destructive: 0 63% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 100 10% 22%;
+    --input: 100 10% 22%;
+    --ring: 100 45% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
